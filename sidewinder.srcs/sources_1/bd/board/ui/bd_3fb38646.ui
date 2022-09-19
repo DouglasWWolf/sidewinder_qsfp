@@ -1,0 +1,62 @@
+{
+   "ActiveEmotionalView":"No Loops",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-313,-564",
+   "DisplayTieOff":"1",
+   "ExpandedHierarchyInLayout":"",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port clk_100mhz -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace port qsfp0_clk -pg 1 -lvl 0:w -x 0 -y 220 -defaultsOSRD
+preplace port qsfp0_rx -pg 1 -lvl 5 -x 1410 -y 240 -defaultsOSRD -right
+preplace port qsfp0_tx -pg 1 -lvl 5 -x 1410 -y 220 -defaultsOSRD
+preplace port port-id_led_heartbeat -pg 1 -lvl 5 -x 1410 -y 530 -defaultsOSRD
+preplace port port-id_pb_rst_n -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace port port-id_gt_pll_lock_0 -pg 1 -lvl 5 -x 1410 -y 340 -defaultsOSRD
+preplace port port-id_channel_up_0 -pg 1 -lvl 5 -x 1410 -y 300 -defaultsOSRD
+preplace port port-id_link_reset_out -pg 1 -lvl 5 -x 1410 -y 360 -defaultsOSRD
+preplace port port-id_sys_reset_out -pg 1 -lvl 5 -x 1410 -y 280 -defaultsOSRD
+preplace portBus lane_up_0 -pg 1 -lvl 5 -x 1410 -y 320 -defaultsOSRD
+preplace inst system_clock -pg 1 -lvl 1 -x 150 -y 340 -defaultsOSRD -pinDir CLK_IN_D left -pinY CLK_IN_D 0L -pinBusDir IBUF_OUT right -pinBusY IBUF_OUT 0R
+preplace inst blinker -pg 1 -lvl 3 -x 770 -y 530 -defaultsOSRD -pinDir CLK left -pinY CLK 0L -pinDir RESETN left -pinY RESETN 20L -pinDir LED right -pinY LED 0R
+preplace inst system_reset -pg 1 -lvl 2 -x 470 -y 280 -swap {3 0 1 2 4 5 6 8 7 9} -defaultsOSRD -pinDir slowest_sync_clk left -pinY slowest_sync_clk 60L -pinDir ext_reset_in left -pinY ext_reset_in 0L -pinDir aux_reset_in left -pinY aux_reset_in 20L -pinDir mb_debug_sys_rst left -pinY mb_debug_sys_rst 40L -pinDir dcm_locked left -pinY dcm_locked 80L -pinDir mb_reset right -pinY mb_reset 0R -pinBusDir bus_struct_reset right -pinBusY bus_struct_reset 20R -pinBusDir peripheral_reset right -pinBusY peripheral_reset 190R -pinBusDir interconnect_aresetn right -pinBusY interconnect_aresetn 40R -pinBusDir peripheral_aresetn right -pinBusY peripheral_aresetn 270R
+preplace inst bandwidth_tester -pg 1 -lvl 3 -x 770 -y 280 -swap {0 1 2 3 4 5 6 7 8 9 11 13 10 12} -defaultsOSRD -pinDir IN_AXIS right -pinY IN_AXIS 0R -pinDir OUT_AXIS right -pinY OUT_AXIS 20R -pinDir clock right -pinY clock 60R -pinDir reset right -pinY reset 130R -pinBusDir xfer_time right -pinBusY xfer_time 40R -pinBusDir rcvd_data right -pinBusY rcvd_data 80R
+preplace inst qsfp_0 -pg 1 -lvl 4 -x 1200 -y 220 -swap {8 1 2 3 4 5 6 7 0 9 10 11 12 13 14 15 16 20 23 19 24 21 18 22 17 25} -defaultsOSRD -pinDir USER_DATA_S_AXIS_TX left -pinY USER_DATA_S_AXIS_TX 40L -pinDir USER_DATA_M_AXIS_RX left -pinY USER_DATA_M_AXIS_RX 20L -pinDir qsfp0_clk left -pinY qsfp0_clk 0L -pinDir qsfp0_tx right -pinY qsfp0_tx 0R -pinDir qsfp0_rx right -pinY qsfp0_rx 20R -pinDir channel_up_0 right -pinY channel_up_0 80R -pinDir gt_pll_lock_0 right -pinY gt_pll_lock_0 120R -pinDir init_clk left -pinY init_clk 60L -pinDir link_reset_out right -pinY link_reset_out 140R -pinDir user_clk_out left -pinY user_clk_out 120L -pinDir sys_reset_out right -pinY sys_reset_out 60R -pinBusDir lane_up_0 right -pinBusY lane_up_0 100R -pinBusDir sys_resetn_out right -pinBusY sys_resetn_out 40R -pinDir reset_in left -pinY reset_in 140L
+preplace inst system_ila_0 -pg 1 -lvl 4 -x 1200 -y 60 -swap {5 1 2 3 4 0 6 7 8 11 10 9} -defaultsOSRD -pinDir SLOT_0_AXIS left -pinY SLOT_0_AXIS 20L -pinDir SLOT_1_AXIS left -pinY SLOT_1_AXIS 0L -pinDir clk left -pinY clk 60L -pinDir resetn right -pinY resetn 60R -pinBusDir probe0 left -pinBusY probe0 40L
+preplace netloc aurora_64b66b_0_channel_up 1 4 1 NJ 300
+preplace netloc aurora_64b66b_0_gt_pll_lock 1 4 1 NJ 340
+preplace netloc aurora_64b66b_0_link_reset_out 1 4 1 NJ 360
+preplace netloc aurora_64b66b_0_sys_reset_out 1 3 2 NJ 410 1390
+preplace netloc aurora_64b66b_0_user_clk_out 1 3 1 970J 120n
+preplace netloc binker_0_LED 1 3 2 NJ 530 NJ
+preplace netloc ext_reset_in_0_1 1 0 2 NJ 280 NJ
+preplace netloc system_clock_IBUF_OUT 1 1 3 280 200 650 200 930J
+preplace netloc system_reset_peripheral_aresetn 1 2 1 NJ 550
+preplace netloc xfer_time 1 3 1 950 100n
+preplace netloc qsfp_0_lane_up_0 1 4 1 N 320
+preplace netloc system_reset_peripheral_reset 1 2 2 NJ 470 930J
+preplace netloc qsfp_0_sys_resetn_out 1 4 1 1390 120n
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 340
+preplace netloc GT_DIFF_REFCLK1_0_1 1 0 4 NJ 220 NJ 220 NJ 220 NJ
+preplace netloc GT_SERIAL_RX_0_1 1 4 1 NJ 240
+preplace netloc aurora_64b66b_0_GT_SERIAL_TX 1 4 1 NJ 220
+preplace netloc aurora_64b66b_0_USER_DATA_M_AXIS_RX 1 3 1 890 60n
+preplace netloc bandwidth_test_0_OUT_AXIS 1 3 1 910 80n
+levelinfo -pg 1 0 150 470 770 1200 1410
+pagesize -pg 1 -db -bbox -sgen -140 0 1570 610
+",
+   "No Loops_ScaleFactor":"0.745144",
+   "No Loops_TopLeft":"-134,-183",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 320 -y -220 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 2 10 -130 610
+levelinfo -pg 1 -10 320 650
+pagesize -pg 1 -db -bbox -sgen -10 -310 650 180
+"
+}
+{
+   "da_board_cnt":"1",
+   "da_clkrst_cnt":"5"
+}

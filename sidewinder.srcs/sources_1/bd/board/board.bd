@@ -1,0 +1,1042 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x59AAA4BCD9172AFB",
+      "device": "xczu19eg-ffvc1760-2-i",
+      "gen_directory": "../../../../sidewinder.gen/sources_1/bd/board",
+      "name": "board",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2021.1"
+    },
+    "design_tree": {
+      "system_clock": "",
+      "blinker": "",
+      "system_reset": "",
+      "bandwidth_tester": "",
+      "qsfp_0": {
+        "aurora_core": "",
+        "quad_and": {
+          "util_vector_logic_0": "",
+          "util_vector_logic_1": "",
+          "util_vector_logic_2": "",
+          "xlslice_0": "",
+          "xlslice_1": "",
+          "xlslice_2": "",
+          "xlslice_3": ""
+        },
+        "reset_inverter": "",
+        "reset_delay": ""
+      },
+      "system_ila_0": ""
+    },
+    "interface_ports": {
+      "clk_100mhz": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:diff_clock:1.0",
+        "vlnv": "xilinx.com:interface:diff_clock_rtl:1.0"
+      },
+      "qsfp0_clk": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:diff_clock:1.0",
+        "vlnv": "xilinx.com:interface:diff_clock_rtl:1.0",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "322265625"
+          }
+        }
+      },
+      "qsfp0_rx": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0",
+        "vlnv": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX_rtl:1.0"
+      },
+      "qsfp0_tx": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0",
+        "vlnv": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX_rtl:1.0"
+      }
+    },
+    "ports": {
+      "led_heartbeat": {
+        "direction": "O"
+      },
+      "pb_rst_n": {
+        "type": "rst",
+        "direction": "I"
+      },
+      "gt_pll_lock_0": {
+        "direction": "O"
+      },
+      "channel_up_0": {
+        "direction": "O"
+      },
+      "lane_up_0": {
+        "direction": "O",
+        "left": "0",
+        "right": "0"
+      },
+      "link_reset_out": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "sys_reset_out": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      }
+    },
+    "components": {
+      "system_clock": {
+        "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
+        "xci_name": "board_util_ds_buf_0_0",
+        "xci_path": "ip/board_util_ds_buf_0_0/board_util_ds_buf_0_0.xci",
+        "inst_hier_path": "system_clock"
+      },
+      "blinker": {
+        "vlnv": "xilinx.com:module_ref:binker:1.0",
+        "xci_name": "board_binker_0_0",
+        "xci_path": "ip/board_binker_0_0/board_binker_0_0.xci",
+        "inst_hier_path": "blinker",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "binker",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESETN",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "board_util_ds_buf_0_0_IBUF_OUT",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "RESETN": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "LED": {
+            "direction": "O"
+          }
+        }
+      },
+      "system_reset": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "xci_name": "board_proc_sys_reset_0_0",
+        "xci_path": "ip/board_proc_sys_reset_0_0/board_proc_sys_reset_0_0.xci",
+        "inst_hier_path": "system_reset"
+      },
+      "bandwidth_tester": {
+        "vlnv": "xilinx.com:module_ref:bandwidth_test:1.0",
+        "xci_name": "board_bandwidth_test_0_0",
+        "xci_path": "ip/board_bandwidth_test_0_0/board_bandwidth_test_0_0.xci",
+        "inst_hier_path": "bandwidth_tester",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "bandwidth_test",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "IN_AXIS": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+            "parameters": {
+              "TDATA_NUM_BYTES": {
+                "value": "32",
+                "value_src": "constant"
+              },
+              "TDEST_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "TID_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "TUSER_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TREADY": {
+                "value": "1",
+                "value_src": "constant"
+              },
+              "HAS_TSTRB": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TKEEP": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TLAST": {
+                "value": "1",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "402832031",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "board_aurora_64b66b_0_1_user_clk_out",
+                "value_src": "default_prop"
+              }
+            },
+            "port_maps": {
+              "TDATA": {
+                "physical_name": "IN_AXIS_TDATA",
+                "direction": "I",
+                "left": "255",
+                "right": "0"
+              },
+              "TLAST": {
+                "physical_name": "IN_AXIS_TLAST",
+                "direction": "I"
+              },
+              "TVALID": {
+                "physical_name": "IN_AXIS_TVALID",
+                "direction": "I"
+              },
+              "TREADY": {
+                "physical_name": "IN_AXIS_TREADY",
+                "direction": "O"
+              }
+            }
+          },
+          "OUT_AXIS": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+            "parameters": {
+              "TDATA_NUM_BYTES": {
+                "value": "32",
+                "value_src": "constant"
+              },
+              "TDEST_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "TID_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "TUSER_WIDTH": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TREADY": {
+                "value": "1",
+                "value_src": "constant"
+              },
+              "HAS_TSTRB": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TKEEP": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "HAS_TLAST": {
+                "value": "1",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "402832031",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "board_aurora_64b66b_0_1_user_clk_out",
+                "value_src": "default_prop"
+              }
+            },
+            "port_maps": {
+              "TDATA": {
+                "physical_name": "OUT_AXIS_TDATA",
+                "direction": "O",
+                "left": "255",
+                "right": "0"
+              },
+              "TLAST": {
+                "physical_name": "OUT_AXIS_TLAST",
+                "direction": "O"
+              },
+              "TVALID": {
+                "physical_name": "OUT_AXIS_TVALID",
+                "direction": "O"
+              },
+              "TREADY": {
+                "physical_name": "OUT_AXIS_TREADY",
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "ports": {
+          "clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_BUSIF": {
+                "value": "IN_AXIS:OUT_AXIS",
+                "value_src": "constant"
+              },
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "402832031",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "board_aurora_64b66b_0_1_user_clk_out",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "xfer_time": {
+            "direction": "O",
+            "left": "63",
+            "right": "0"
+          },
+          "rcvd_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "qsfp_0": {
+        "interface_ports": {
+          "USER_DATA_S_AXIS_TX": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+          },
+          "USER_DATA_M_AXIS_RX": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+          },
+          "qsfp0_clk": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:diff_clock:1.0",
+            "vlnv": "xilinx.com:interface:diff_clock_rtl:1.0"
+          },
+          "qsfp0_tx": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0",
+            "vlnv": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX_rtl:1.0"
+          },
+          "qsfp0_rx": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0",
+            "vlnv": "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX_rtl:1.0"
+          }
+        },
+        "ports": {
+          "channel_up_0": {
+            "direction": "O"
+          },
+          "gt_pll_lock_0": {
+            "direction": "O"
+          },
+          "init_clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "link_reset_out": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "user_clk_out": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "sys_reset_out": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "lane_up_0": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "sys_resetn_out": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "reset_in": {
+            "type": "rst",
+            "direction": "I"
+          }
+        },
+        "components": {
+          "aurora_core": {
+            "vlnv": "xilinx.com:ip:aurora_64b66b:12.0",
+            "xci_name": "board_aurora_64b66b_0_1",
+            "xci_path": "ip/board_aurora_64b66b_0_1/board_aurora_64b66b_0_1.xci",
+            "inst_hier_path": "qsfp_0/aurora_core",
+            "parameters": {
+              "CHANNEL_ENABLE": {
+                "value": "X0Y12 X0Y13 X0Y14 X0Y15"
+              },
+              "C_AURORA_LANES": {
+                "value": "4"
+              },
+              "C_GT_CLOCK_1": {
+                "value": "GTYQ0"
+              },
+              "C_GT_TYPE": {
+                "value": "GTY"
+              },
+              "C_LINE_RATE": {
+                "value": "25.78125"
+              },
+              "C_REFCLK_FREQUENCY": {
+                "value": "322.265625"
+              },
+              "C_REFCLK_SOURCE": {
+                "value": "MGTREFCLK0_of_Quad_X0Y3"
+              },
+              "C_START_LANE": {
+                "value": "X0Y12"
+              },
+              "C_START_QUAD": {
+                "value": "Quad_X0Y3"
+              },
+              "C_UCOLUMN_USED": {
+                "value": "left"
+              },
+              "SupportLevel": {
+                "value": "1"
+              },
+              "TransceiverControl": {
+                "value": "false"
+              },
+              "drp_mode": {
+                "value": "Disabled"
+              },
+              "interface_mode": {
+                "value": "Streaming"
+              }
+            }
+          },
+          "quad_and": {
+            "ports": {
+              "data": {
+                "direction": "I",
+                "left": "0",
+                "right": "3"
+              },
+              "data_out": {
+                "direction": "O",
+                "left": "0",
+                "right": "0"
+              }
+            },
+            "components": {
+              "util_vector_logic_0": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "board_util_vector_logic_0_0",
+                "xci_path": "ip/board_util_vector_logic_0_0/board_util_vector_logic_0_0.xci",
+                "inst_hier_path": "qsfp_0/quad_and/util_vector_logic_0",
+                "parameters": {
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
+              "util_vector_logic_1": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "board_util_vector_logic_0_1",
+                "xci_path": "ip/board_util_vector_logic_0_1/board_util_vector_logic_0_1.xci",
+                "inst_hier_path": "qsfp_0/quad_and/util_vector_logic_1",
+                "parameters": {
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
+              "util_vector_logic_2": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "board_util_vector_logic_0_2",
+                "xci_path": "ip/board_util_vector_logic_0_2/board_util_vector_logic_0_2.xci",
+                "inst_hier_path": "qsfp_0/quad_and/util_vector_logic_2",
+                "parameters": {
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
+              "xlslice_0": {
+                "vlnv": "xilinx.com:ip:xlslice:1.0",
+                "xci_name": "board_xlslice_0_0",
+                "xci_path": "ip/board_xlslice_0_0/board_xlslice_0_0.xci",
+                "inst_hier_path": "qsfp_0/quad_and/xlslice_0",
+                "parameters": {
+                  "DIN_WIDTH": {
+                    "value": "4"
+                  }
+                }
+              },
+              "xlslice_1": {
+                "vlnv": "xilinx.com:ip:xlslice:1.0",
+                "xci_name": "board_xlslice_0_1",
+                "xci_path": "ip/board_xlslice_0_1/board_xlslice_0_1.xci",
+                "inst_hier_path": "qsfp_0/quad_and/xlslice_1",
+                "parameters": {
+                  "DIN_FROM": {
+                    "value": "1"
+                  },
+                  "DIN_TO": {
+                    "value": "1"
+                  },
+                  "DIN_WIDTH": {
+                    "value": "4"
+                  },
+                  "DOUT_WIDTH": {
+                    "value": "1"
+                  }
+                }
+              },
+              "xlslice_2": {
+                "vlnv": "xilinx.com:ip:xlslice:1.0",
+                "xci_name": "board_xlslice_0_2",
+                "xci_path": "ip/board_xlslice_0_2/board_xlslice_0_2.xci",
+                "inst_hier_path": "qsfp_0/quad_and/xlslice_2",
+                "parameters": {
+                  "DIN_FROM": {
+                    "value": "2"
+                  },
+                  "DIN_TO": {
+                    "value": "2"
+                  },
+                  "DIN_WIDTH": {
+                    "value": "4"
+                  },
+                  "DOUT_WIDTH": {
+                    "value": "1"
+                  }
+                }
+              },
+              "xlslice_3": {
+                "vlnv": "xilinx.com:ip:xlslice:1.0",
+                "xci_name": "board_xlslice_0_3",
+                "xci_path": "ip/board_xlslice_0_3/board_xlslice_0_3.xci",
+                "inst_hier_path": "qsfp_0/quad_and/xlslice_3",
+                "parameters": {
+                  "DIN_FROM": {
+                    "value": "3"
+                  },
+                  "DIN_TO": {
+                    "value": "3"
+                  },
+                  "DIN_WIDTH": {
+                    "value": "4"
+                  },
+                  "DOUT_WIDTH": {
+                    "value": "1"
+                  }
+                }
+              }
+            },
+            "nets": {
+              "data_1": {
+                "ports": [
+                  "data",
+                  "xlslice_0/Din",
+                  "xlslice_1/Din",
+                  "xlslice_2/Din",
+                  "xlslice_3/Din"
+                ]
+              },
+              "util_vector_logic_0_Res": {
+                "ports": [
+                  "util_vector_logic_0/Res",
+                  "util_vector_logic_2/Op1"
+                ]
+              },
+              "util_vector_logic_1_Res": {
+                "ports": [
+                  "util_vector_logic_1/Res",
+                  "util_vector_logic_2/Op2"
+                ]
+              },
+              "util_vector_logic_2_Res": {
+                "ports": [
+                  "util_vector_logic_2/Res",
+                  "data_out"
+                ]
+              },
+              "xlslice_0_Dout": {
+                "ports": [
+                  "xlslice_0/Dout",
+                  "util_vector_logic_0/Op1"
+                ]
+              },
+              "xlslice_1_Dout": {
+                "ports": [
+                  "xlslice_1/Dout",
+                  "util_vector_logic_0/Op2"
+                ]
+              },
+              "xlslice_2_Dout": {
+                "ports": [
+                  "xlslice_2/Dout",
+                  "util_vector_logic_1/Op1"
+                ]
+              },
+              "xlslice_3_Dout": {
+                "ports": [
+                  "xlslice_3/Dout",
+                  "util_vector_logic_1/Op2"
+                ]
+              }
+            }
+          },
+          "reset_inverter": {
+            "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+            "xci_name": "board_util_vector_logic_0_3",
+            "xci_path": "ip/board_util_vector_logic_0_3/board_util_vector_logic_0_3.xci",
+            "inst_hier_path": "qsfp_0/reset_inverter",
+            "parameters": {
+              "C_OPERATION": {
+                "value": "not"
+              },
+              "C_SIZE": {
+                "value": "1"
+              }
+            }
+          },
+          "reset_delay": {
+            "vlnv": "xilinx.com:module_ref:reset_delay:1.0",
+            "xci_name": "board_reset_delay_0_0",
+            "xci_path": "ip/board_reset_delay_0_0/board_reset_delay_0_0.xci",
+            "inst_hier_path": "qsfp_0/reset_delay",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "reset_delay",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clock": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "board_util_ds_buf_0_0_IBUF_OUT",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "reset_in": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_HIGH",
+                    "value_src": "const_prop"
+                  }
+                }
+              },
+              "reset_out": {
+                "type": "rst",
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_HIGH"
+                  }
+                }
+              },
+              "resetn_out": {
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "GT_DIFF_REFCLK1_0_1": {
+            "interface_ports": [
+              "qsfp0_clk",
+              "aurora_core/GT_DIFF_REFCLK1"
+            ]
+          },
+          "GT_SERIAL_RX_0_1": {
+            "interface_ports": [
+              "qsfp0_rx",
+              "aurora_core/GT_SERIAL_RX"
+            ]
+          },
+          "aurora_64b66b_0_GT_SERIAL_TX": {
+            "interface_ports": [
+              "qsfp0_tx",
+              "aurora_core/GT_SERIAL_TX"
+            ]
+          },
+          "aurora_64b66b_0_USER_DATA_M_AXIS_RX": {
+            "interface_ports": [
+              "USER_DATA_M_AXIS_RX",
+              "aurora_core/USER_DATA_M_AXIS_RX"
+            ],
+            "hdl_attributes": {
+              "DEBUG": {
+                "value": "true"
+              }
+            }
+          },
+          "bandwidth_test_0_OUT_AXIS": {
+            "interface_ports": [
+              "USER_DATA_S_AXIS_TX",
+              "aurora_core/USER_DATA_S_AXIS_TX"
+            ],
+            "hdl_attributes": {
+              "DEBUG": {
+                "value": "true"
+              }
+            }
+          }
+        },
+        "nets": {
+          "aurora_64b66b_0_channel_up": {
+            "ports": [
+              "aurora_core/channel_up",
+              "channel_up_0"
+            ]
+          },
+          "aurora_64b66b_0_gt_pll_lock": {
+            "ports": [
+              "aurora_core/gt_pll_lock",
+              "gt_pll_lock_0"
+            ]
+          },
+          "aurora_64b66b_0_link_reset_out": {
+            "ports": [
+              "aurora_core/link_reset_out",
+              "link_reset_out"
+            ]
+          },
+          "aurora_64b66b_0_sys_reset_out": {
+            "ports": [
+              "aurora_core/sys_reset_out",
+              "sys_reset_out",
+              "reset_inverter/Op1"
+            ]
+          },
+          "aurora_64b66b_0_user_clk_out": {
+            "ports": [
+              "aurora_core/user_clk_out",
+              "user_clk_out"
+            ]
+          },
+          "aurora_core_0_lane_up": {
+            "ports": [
+              "aurora_core/lane_up",
+              "quad_and/data"
+            ]
+          },
+          "quad_and_data_out": {
+            "ports": [
+              "quad_and/data_out",
+              "lane_up_0"
+            ]
+          },
+          "reset_delay_0_reset_out": {
+            "ports": [
+              "reset_delay/reset_out",
+              "aurora_core/pma_init",
+              "aurora_core/reset_pb"
+            ]
+          },
+          "reset_in_1": {
+            "ports": [
+              "reset_in",
+              "reset_delay/reset_in"
+            ]
+          },
+          "reset_inverter_Res": {
+            "ports": [
+              "reset_inverter/Res",
+              "sys_resetn_out"
+            ]
+          },
+          "system_clock_IBUF_OUT": {
+            "ports": [
+              "init_clk",
+              "aurora_core/init_clk",
+              "reset_delay/clock"
+            ]
+          }
+        }
+      },
+      "system_ila_0": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "board_system_ila_0_1",
+        "xci_path": "ip/board_system_ila_0_1/board_system_ila_0_1.xci",
+        "inst_hier_path": "system_ila_0",
+        "parameters": {
+          "C_MON_TYPE": {
+            "value": "MIX"
+          },
+          "C_NUM_MONITOR_SLOTS": {
+            "value": "2"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "1"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          },
+          "C_SLOT_0_APC_EN": {
+            "value": "0"
+          },
+          "C_SLOT_0_AXI_DATA_SEL": {
+            "value": "1"
+          },
+          "C_SLOT_0_AXI_TRIG_SEL": {
+            "value": "1"
+          },
+          "C_SLOT_0_INTF_TYPE": {
+            "value": "xilinx.com:interface:axis_rtl:1.0"
+          },
+          "C_SLOT_1_APC_EN": {
+            "value": "0"
+          },
+          "C_SLOT_1_AXI_DATA_SEL": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_TRIG_SEL": {
+            "value": "1"
+          },
+          "C_SLOT_1_INTF_TYPE": {
+            "value": "xilinx.com:interface:axis_rtl:1.0"
+          }
+        },
+        "interface_ports": {
+          "SLOT_0_AXIS": {
+            "mode": "Monitor",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+          },
+          "SLOT_1_AXIS": {
+            "mode": "Monitor",
+            "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "CLK_IN_D_0_1": {
+        "interface_ports": [
+          "clk_100mhz",
+          "system_clock/CLK_IN_D"
+        ]
+      },
+      "GT_DIFF_REFCLK1_0_1": {
+        "interface_ports": [
+          "qsfp0_clk",
+          "qsfp_0/qsfp0_clk"
+        ]
+      },
+      "GT_SERIAL_RX_0_1": {
+        "interface_ports": [
+          "qsfp0_rx",
+          "qsfp_0/qsfp0_rx"
+        ]
+      },
+      "aurora_64b66b_0_GT_SERIAL_TX": {
+        "interface_ports": [
+          "qsfp0_tx",
+          "qsfp_0/qsfp0_tx"
+        ]
+      },
+      "aurora_64b66b_0_USER_DATA_M_AXIS_RX": {
+        "interface_ports": [
+          "qsfp_0/USER_DATA_M_AXIS_RX",
+          "bandwidth_tester/IN_AXIS",
+          "system_ila_0/SLOT_1_AXIS"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "bandwidth_test_0_OUT_AXIS": {
+        "interface_ports": [
+          "qsfp_0/USER_DATA_S_AXIS_TX",
+          "bandwidth_tester/OUT_AXIS",
+          "system_ila_0/SLOT_0_AXIS"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "nets": {
+      "aurora_64b66b_0_channel_up": {
+        "ports": [
+          "qsfp_0/channel_up_0",
+          "channel_up_0"
+        ]
+      },
+      "aurora_64b66b_0_gt_pll_lock": {
+        "ports": [
+          "qsfp_0/gt_pll_lock_0",
+          "gt_pll_lock_0"
+        ]
+      },
+      "aurora_64b66b_0_link_reset_out": {
+        "ports": [
+          "qsfp_0/link_reset_out",
+          "link_reset_out"
+        ]
+      },
+      "aurora_64b66b_0_sys_reset_out": {
+        "ports": [
+          "qsfp_0/sys_reset_out",
+          "sys_reset_out",
+          "bandwidth_tester/reset"
+        ]
+      },
+      "aurora_64b66b_0_user_clk_out": {
+        "ports": [
+          "qsfp_0/user_clk_out",
+          "bandwidth_tester/clock",
+          "system_ila_0/clk"
+        ]
+      },
+      "binker_0_LED": {
+        "ports": [
+          "blinker/LED",
+          "led_heartbeat"
+        ]
+      },
+      "ext_reset_in_0_1": {
+        "ports": [
+          "pb_rst_n",
+          "system_reset/ext_reset_in"
+        ]
+      },
+      "gt_reset_out": {
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "qsfp_0_lane_up_0": {
+        "ports": [
+          "qsfp_0/lane_up_0",
+          "lane_up_0"
+        ]
+      },
+      "qsfp_0_sys_resetn_out": {
+        "ports": [
+          "qsfp_0/sys_resetn_out",
+          "system_ila_0/resetn"
+        ]
+      },
+      "system_clock_IBUF_OUT": {
+        "ports": [
+          "system_clock/IBUF_OUT",
+          "blinker/CLK",
+          "system_reset/slowest_sync_clk",
+          "qsfp_0/init_clk"
+        ]
+      },
+      "system_reset_peripheral_aresetn": {
+        "ports": [
+          "system_reset/peripheral_aresetn",
+          "blinker/RESETN"
+        ]
+      },
+      "system_reset_peripheral_reset": {
+        "ports": [
+          "system_reset/peripheral_reset",
+          "qsfp_0/reset_in"
+        ]
+      },
+      "xfer_time": {
+        "ports": [
+          "bandwidth_tester/xfer_time",
+          "system_ila_0/probe0"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      }
+    }
+  }
+}
